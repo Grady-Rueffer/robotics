@@ -20,20 +20,31 @@
 using namespace vex;
 
 void turn(bool rDir, int rotationDegrees) {
-
+  RightMotor.setVelocity(0, percent);
+  LeftMotor.setVelocity(0, percent);
   if (rDir) {
     double rotationTotal = Inertial7.rotation(degrees) + rotationDegrees;
     while (Inertial7.rotation(degrees) < rotationTotal) {
+
       RightMotor.spin(reverse);
       LeftMotor.spin(forward);
+
+      RightMotor.setVelocity(50, percent);
+      LeftMotor.setVelocity(50, percent);
     }
   } else {
     double rotationTotal = Inertial7.rotation(degrees) - rotationDegrees;
     while (Inertial7.rotation(degrees) > rotationTotal) {
+
       RightMotor.spin(forward);
       LeftMotor.spin(reverse);
+
+      RightMotor.setVelocity(50, percent);
+      LeftMotor.setVelocity(50, percent);
     }
   }
+  RightMotor.setVelocity(0, percent);
+  LeftMotor.setVelocity(0, percent);
 }
 
 void autoMode(bool rSide) {
