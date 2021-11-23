@@ -16,7 +16,7 @@
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
-
+// :^)
 using namespace vex;
 
 void turn(bool rDir, int rotationDegrees) {
