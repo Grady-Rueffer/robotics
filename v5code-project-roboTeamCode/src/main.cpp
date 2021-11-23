@@ -24,6 +24,23 @@ int deadBand = 5;
 int rightSpeed;
 int leftSpeed;
 
+void turn(bool rDir, int rotationDegrees){
+  double rotationTotal = Inertial7.rotation(degrees) - rotationDegrees;
+if(rDir){
+while(Inertial7.rotation(degrees) < rotationTotal){
+  RightMotor.spin(reverse);
+LeftMotor.spin(forward);
+}
+}
+else{
+while(Inertial7.rotation(degrees) < rotationTotal){
+  RightMotor.spin(forward);
+LeftMotor.spin(reverse);
+}
+}
+
+}
+
 int main() {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
