@@ -21,8 +21,8 @@ using namespace vex;
 
 private
 void autoMode(bool rSide) {
-  //uncurl
-  
+  // uncurl
+
   if (rSide) {
     // move forward lil bit
     // rotate 45ish degrees right
@@ -32,7 +32,7 @@ void autoMode(bool rSide) {
     // turn so arm is over pole
     // dump the rings
 
-    //turn back
+    // turn back
     // move forwards
     // pick up goal
     // move back until past line
@@ -42,8 +42,13 @@ void autoMode(bool rSide) {
     // move to other goal
     // pickup
     // bring back
-  } else {
 
+  } else {
+    //angle bot
+    // dump rings
+    // unangle bot
+    // pick up goal
+    // move onto goal
   }
 }
 
