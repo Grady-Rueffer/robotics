@@ -19,6 +19,34 @@
 
 using namespace vex;
 
+private
+void autoMode(bool rSide) {
+  //uncurl
+  
+  if (rSide) {
+    // move forward lil bit
+    // rotate 45ish degrees right
+    // move forward until hit goal (method TBD)
+
+    // move back small amount
+    // turn so arm is over pole
+    // dump the rings
+
+    //turn back
+    // move forwards
+    // pick up goal
+    // move back until past line
+    // rotate goal
+    // put down
+
+    // move to other goal
+    // pickup
+    // bring back
+  } else {
+
+  }
+}
+
 bool rc = true;
 int deadBand = 5;
 int rightSpeed;
@@ -29,28 +57,29 @@ int main() {
   vexcodeInit();
 
   while (rc) {
-    //how fast it move
+    // how fast it move
     rightSpeed = Controller1.Axis2.position(percent);
     leftSpeed = Controller1.Axis3.position(percent);
-//antistick-drift
+    // antistick-drift
     if (abs(rightSpeed) < deadBand) {
       RightMotor.setVelocity(0, percent);
-      
-    } 
-    else {
+
+    } else {
       RightMotor.setVelocity(rightSpeed, percent);
     }
 
     if (abs(leftSpeed) < deadBand) {
       LeftMotor.setVelocity(0, percent);
-      
-    } 
-    else {
+
+    } else {
       LeftMotor.setVelocity(leftSpeed, percent);
     }
     RightMotor.spin(forward);
-  LeftMotor.spin(forward);
+    LeftMotor.spin(forward);
   }
-
-  
+  if (Controller1.ButtonRight.pressing()) {
+    autoMode(1);
+  } else if (Controller1.ButtonLeft.pressing()) {
+    autoMode(0);
+  }
 }
